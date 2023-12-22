@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Food Zone</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="input.css">
+   <link rel="stylesheet" href="script.js">
+</head>
+
+<body>
+
+   <nav class="flex mx-28 justify-between space-x-4 ">
+      <div class="flex flex-row space-x-3">
+         <div class="flex justify-between items-center ">
+            <img class="  " src="../images/fm-header-logo.svg" alt="">
+         </div>
+         <div class="flex items-center">
+            <div>Deliver to: <span class="text-red-600"> koramangal,Beng...> </span></div>
+         </div>
+      </div>
+      <div class="flex">
+         <span class="bg-yellow-300 p-2 px-3">
+            <p class="text-sm">FreashPass</p>
+            <p class="text-xs">Get extra 20% off</p>
+         </span>
+         <div class="bg-[#603b6d] p-2 px-3">
+            <span class="text-white text-sm ">Try FreshClub </span>
+            <span class="text-xs bg-white justify-end">NEW</span>
+         </div>
+         <p class="flex items-center px-8">Download App</p>
+      </div>
+   </nav>
+   <hr>
+
+   <nav class="flex space-x-5  justify-end z-20 sticky top-0 bg-white px-36 shadow shadow-gray-300 py-5">
+      <div class="flex  items-center">
+         <img class="w-[18px] h-[18px]" src="../images/search.png" alt="">
+         <p>Search</p>
+      </div>
+      <div class=" flex items-center">
+         <p>Offers</p>
+      </div>
+      <div class="flex items-center">
+         <img class="w-[18px] h-[18px]" src="../images/customer-service.png" alt="">
+      </div>
+      <div class="flex items-center">
+         <img class="w-[25px] h-[25px]" src="../images/log-in (1).png" alt="">
+      </div>
+      <div>
+         <img class="w-[25px] h-[25px]" src="../images/shopping-cart.png" alt="">
+      </div>
+   </nav>
+   <hr>
+<div class="flex justify-center">
+   <div id="controls-carousel" class="relative w-10/12 " data-carousel="static">
+    
+      <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        
+         <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="../images/ready-eat-meals-arrangement.jpg"
+               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+         </div>
+        
+      
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+         <img " src="../images/ready-eat-meals-arrangement (2).jpg"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+    
+     
+      <div class=" duration-700 ease-in-out" data-carousel-item>
+         <img src="../images/healthy-lunch-meal-with-cooked-beef-curry-generated-by-ai.jpg"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+     
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+         <img src="../images/ready-eat-meals-arrangement (1).jpg"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+   </div>
+
+   <button type="button"
+      class="absolute top-0 start-0 z-7 flex items-center justify-center h-full px-7 cursor-pointer group focus:outline-none"
+      data-carousel-prev>
+      <span
+         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+               d="M5 1 1 5l4 4" />
+         </svg>
+         <span class="sr-only">Previous</span>
+      </span>
+   </button>
+   <button type="button"
+      class="absolute top-0 end-0 z-7 flex items-center justify-center h-full px-7 cursor-pointer group focus:outline-none"
+      data-carousel-next>
+      <span
+         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+               d="m1 9 4-4-4-4" />
+         </svg>
+         <span class="sr-only">Next</span>
+      </span>
+   </button>
+</div>
+</div>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+      const carousel = document.querySelector('[data-carousel="static"]');
+      const prevButton = carousel.querySelector('[data-carousel-prev]');
+      const nextButton = carousel.querySelector('[data-carousel-next]');
+      const items = carousel.querySelectorAll('[data-carousel-item]');
+
+      let currentIndex = 0;
+
+     
+      items[currentIndex].classList.remove('hidden');
+
+      function showItem(index) {
+         items.forEach(item => item.classList.add('hidden'));
+         items[index].classList.remove('hidden');
+      }
+
+      function nextItem() {
+         currentIndex = (currentIndex + 1) % items.length;
+         showItem(currentIndex);
+      }
+
+      function prevItem() {
+         currentIndex = (currentIndex - 1 + items.length) % items.length;
+         showItem(currentIndex);
+      }
+
+      // Event listeners for prev and next buttons
+      prevButton.addEventListener('click', prevItem);
+      nextButton.addEventListener('click', nextItem);
+   });
+</script>
+
+   <hr>
+
+   <div class=" flex py-4 items-center justify-between mx-36 sticky top-[65px] bg-white z-10 ">
+      <h1 class=" text-3xl">CATEGORIES</h1>
+      <div class=" space-x-5 flex justify- items-center">
+         <p class="border-black border px-2 rounded">VEG</p>
+         <p class="border-black border px-2 rounded">PRICE</p>
+         <div class="flex items-center">
+            <img class="w-4 h-4 flex items-center" src="../images/filter.png" alt="">
+            <p>FILTERS</p>
+         </div>
+      </div>
+   </div>
+   <hr class="sticky top-[133px]">
+
+   <div class="flex mx-36">
+      <!-- < class="flex py-4 "> -->
+      <div class=" space-y-5 w-1/4 ">
+         <ul class="space-y-5 sticky top-[138px] text-start py-4 px-5">
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"><a
+                  href="#Today">Today's Surprise MEal</a>
+            </li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"><a
+                  href="#Bowls">Bowls</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"><a
+                  href="#Superbowls">Superbowls</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"><a
+                  href="#Noodles">Noodles</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"> <a
+                  href="#Thalis">Thalis</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"> <a
+                  href="#Appetizers">Appetizers</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"> <a href="#Wraps">
+                  Wraps</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"> <a
+                  href="#Soups and Salads"> Soups and Salads</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"> <a
+                  href="#Keto Specials"> Keto Specials</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"> <a
+                  href="#All day breakfast"> All day breakfast</a></li>
+            <li class="hover:underline-offset-8 hover:underline hover:scale-[1.1] decoration-red-500"> <a
+                  href="#Desserts & Beverages"> Desserts & Beverages</a></li>
+         </ul>
+      </div>
+
+      <div class="w-3/4 ">
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Today">Today's Surprise MEal</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32">Today's Surprise MEal</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Bowls">Bowls</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Superbowls">Superbowls</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Noodles">Noodles</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Thalis">Thalis</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Appetizers">Appetizers</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="#Wraps">Wraps</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Soups and Salads">Soups and Salads</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Keto Specials">Keto Specials</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="All day breakfast">All day breakfast</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <h1 class=" text-4xl font-semibold py-4 pt-32" id="Desserts & Beverages">Desserts & Beverages</h1>
+         <div class="space-y-3">
+            <div class="flex space-x-4 ">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="flex space-x-4">
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="flex flex-col w-[32%]  justify-between rounded-2xl">
+                  <div class="flex pb-1">
+                     <img class="w-[18px]" src="../images/nonveg.png" alt="">
+                     <p class="text-sm text-gray-400">ASIAN</p>
+                  </div>
+                  <div class=" overflow-hidden border  rounded-xl">
+                     <img class="hover:scale-[1.1] duration-200" src="../images/food.JPG" alt="" />
+                  </div>
+                  <div>
+                     <p class="px-7 py-2">Cheddar-Golden Onion Rice Bowl </P>
+                     <div class="flex px-7 justify-between ">
+                        <div class="pb-3">
+                           <P>₹149 &nbsp; <strike class="text-sm text-gray-400"> ₹299</strike> </P>
+                           <p class="text-sm font-semibold">50% OFF</p>
+                        </div>
+                        <div>
+                           <button class="border bg-orange-400 rounded-full p-1 px-7">Add</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <hr>
+
+   <div class="flex  mx-36 my-24 justify-between">
+      <div class="flex space-x-10">
+         <ul class="space-y-4">
+            <li class="text-gray-400">COMPANY</li>
+            <li>FAQ</li>
+            <li>About</li>
+            <li>Careers</li>
+            <li>Blog </li>
+         </ul>
+         <ul class="space-y-4">
+            <li class="text-gray-400">HELP & CONTACT</li>
+            <li>Help Center</li>
+            <li>Email Us</li>
+            <li>080-4042-4242</li>
+         </ul>
+         <ul class="space-y-4">
+            <li class="text-gray-400">MORE FROM US</li>
+            <li>Bulk/Party Order</li>
+            <li>Cake Order</li>
+            <li>FreshClub</li>
+            <li>Offers</li>
+         </ul>
+      </div>
+      <div class="flex flex-col space-y-16">
+         <div class="">
+            <p class="text-gray-400 my-2">SUBSCRIBE TO OUR DROOLWORTHY NEWSLETTER</p>
+            <div class="border-orange-500 border flex justify-between ">
+               <input class=" rounded-sm w-96" type="email" placeholder=" Enter your email">
+               <button
+                  class=" my-1 rounded-sm px-1 bg-slate-100 hover:text-white hover:bg-orange-500 transition duration-500 mr-1">Subscribe</button>
+            </div>
+         </div>
+         <div class="flex space-x-5 items-center">
+            <button class="flex space-x-3 ">
+               <img class="w-32 h-10" src="../images/google-play.jpg" alt="">
+            </button>
+            <button>
+
+               <img class="w-32 h-14   " src="../images/btn-app-store-normal-2.svg" alt="">
+            </button>
+         </div>
+      </div>
+   </div>
+   <div class="bg-[#343433] py-20 px-36">
+      <div class="  flex">
+         <div class="flex space-x-6 ">
+            <nav class="flex flex-col">
+               <h4 class="text-white mb-5">CATEGORIES</h4>
+               <a class="text-gray-300" href="/category/mains">Mains</a>
+               <a class="text-gray-300" href="/category/pizzas">Pizzas</a>
+               <a class="text-gray-300" href="/category/salads">Salads</a>
+               <a class="text-gray-300" href="/category/desserts">Desserts</a>
+               <a class="text-gray-300" href="/category/quickbites">Quickbites</a>
+
+            </nav>
+            <div>
+               <h4 class="text-white mb-5">CUISINES</h4>
+               <nav class="flex space-x-5">
+                  <span class="flex flex-col">
+                     <a class="text-gray-200" href="/cuisine/mexican-food">Mexican</a>
+                     <a class="text-gray-300" href="/cuisine/thai-food">Thai</a>
+                     <a class="text-gray-300" href="/cuisine/continental-food">Continental</a>
+                     <a class="text-gray-300" href="/cuisine/mediterranean-food">Mediterranean</a>
+                  </span>
+                  <span class="flex flex-col">
+                     <a class="text-gray-300" href="/cuisine/indian-food">Indian</a>
+                     <a class="text-gray-300" href="/cuisine/chinese-food">Chinese</a>
+                     <a class="text-gray-300" href="/cuisine/italian-food">Italian</a>
+                     <a class="text-gray-300" href="/cuisine/american-food">American</a>
+                  </span>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+
+</html>
